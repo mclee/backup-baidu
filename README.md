@@ -1,6 +1,6 @@
-# Backup::Baidu
+# Backup::Baidu (百度云盘)
 
-This Gem is aimed to provide a plugin for [Backup](https://github.com/meskyanichi/backup), using Baidu's [PCS](http://developer.baidu.com/wiki/index.php?title=docs/pcs/rest/overview) as storage.
+This Gem is aimed to provide a plugin for [Backup](https://github.com/meskyanichi/backup), using Baidu's [PCS (百度云盘)](http://developer.baidu.com/wiki/index.php?title=docs/pcs/rest/overview) as storage.
 
 
 ## Installation
