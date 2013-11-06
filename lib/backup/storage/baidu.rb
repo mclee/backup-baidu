@@ -24,11 +24,12 @@ module Backup
         if session
           @connection.access_token = session
         else
-          puts "First use Baidu you need authorize first!\n\n"
+          puts "You'll need to authorize from Baidu for the first time:\n\n"
           puts @connection.authorize_url
-          print "Type 'code' in callback url:"
+          print "Type in 'code' from callback url: "
           auth_code = $stdin.gets.chomp.split("\n").first
           @connection.token!(auth_code)
+          puts "Auth successful!"
           save_session(@connection.access_token)
         end
         @connection
@@ -36,6 +37,7 @@ module Backup
 
       def save_session(token)
         @access_token = token
+        FileUtils.mkdir_p(Config.cache_path) unless File.directory?(Config.cache_path)
         File.open(cached_file,"w") do |f|
           f.puts @access_token.to_hash.to_json
         end

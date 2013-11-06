@@ -1,6 +1,12 @@
+# Don't use this just yet - still buggy.
+---
+
+
 # Backup::Baidu
 
-TODO: Write a gem description
+This Gem is aimed to provide a plugin for [Backup](https://github.com/meskyanichi/backup), using Baidu's [PCS](http://developer.baidu.com/wiki/index.php?title=docs/pcs/rest/overview) as storage.
+
+
 
 ## Installation
 

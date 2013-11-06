@@ -1,4 +1,4 @@
-Copyright (c) 2013 DylanDeng
+Copyright (c) 2013 DylanDeng, George Lee
 
 MIT License
 
