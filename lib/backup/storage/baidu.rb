@@ -50,9 +50,9 @@ module Backup
           @session = OAuth2::AccessToken.from_hash(@connection.oauth_client, JSON.parse(stored_data))
           if @session.expired?
             Logger.info "Access Token has expired, not refresh a new token..."
-            @session.refresh!
-            Logger.info "Refresh successed. #{@session.token}"
-            save_session(@session)
+            new_token = @session.refresh!
+            Logger.info "Refresh successed. #{new_token.token}"
+            save_session(new_token)
           end
         end
         @session
