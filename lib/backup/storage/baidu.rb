@@ -49,9 +49,9 @@ module Backup
           stored_data = File.open(cached_file).read
           @session = OAuth2::AccessToken.from_hash(@connection.oauth_client, JSON.parse(stored_data))
           if @session.expired?
-            Logger.info "Access Token has expired, not refresh a new token..."
+            Logger.info "Access Token expired, refreshing a new token..."
             new_token = @session.refresh!
-            Logger.info "Refresh successed. #{new_token.token}"
+            Logger.info "Refresh successful. #{new_token.token}"
             save_session(new_token)
           end
         end
@@ -74,7 +74,7 @@ module Backup
 
       def remove!(package)
         remote_path = remote_path_for(package)
-        Logger.info "Removeing '#{remote_path}' from Baidu..."
+        Logger.info "Removing '#{remote_path}' from Baidu..."
         connection.delete(remote_path)
       end
     end
