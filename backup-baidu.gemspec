@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 Gem::Specification.new do |spec|
   spec.name          = "backup-baidu"
-  spec.version       = "0.1.1"
+  spec.version       = "0.2.0"
   spec.authors       = ["DylanDeng", "George Lee"]
   spec.email         = ["dylan@beansmile.com", "mclee@foolme.net"]
   spec.description   = %q{pan.baidu.com Storage support for Backup}
