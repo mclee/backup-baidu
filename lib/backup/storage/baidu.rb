@@ -1,12 +1,13 @@
 module Backup
   module Storage
     class Baidu < Base
-      attr_accessor :api_key, :api_secret, :path
+      attr_accessor :api_key, :api_secret, :path, :cache_path
 
       def initialize(model, storage_id = nil, &block)
         super(model, storage_id)
 
         @path ||= 'backups'
+        @cache_path ||= '.cache'
 
         instance_eval(&block) if block_given?
       end
@@ -37,7 +38,7 @@ module Backup
 
       def save_session(token)
         @access_token = token
-        FileUtils.mkdir_p(Config.cache_path) unless File.directory?(Config.cache_path)
+        FileUtils.mkdir_p(self.cache_path) unless File.directory?(self.cache_path)
         File.open(cached_file,"w") do |f|
           f.puts @access_token.to_hash.to_json
         end
@@ -59,7 +60,7 @@ module Backup
       end
 
       def cached_file
-        File.join(Config.cache_path, "baidu-" + self.api_key + "-" + self.api_secret)
+        File.join(self.cache_path, "baidu-" + self.api_key + "-" + self.api_secret)
       end
 
       def transfer!
