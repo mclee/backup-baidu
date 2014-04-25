@@ -60,7 +60,8 @@ module Backup
       end
 
       def cached_file
-        File.join(self.cache_path, "baidu-" + self.api_key + "-" + self.api_secret)
+        path = self.cache_path.start_with?('/') ? self.cache_path : File.join(Config.root_path, self.cache_path)
+        File.join(path, "baidu-" + self.api_key + "-" + self.api_secret)
       end
 
       def transfer!
